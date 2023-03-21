@@ -7,14 +7,17 @@ import java.util.List;
 
 public class ListTables {
     public static void main(String[] args) throws IOException {
+        // Instantiating the Configuration class with HBase configuration
         Configuration conf = HBaseConfiguration.create();
 
+        // Creating a Connection instance using the Configuration object
         Connection connection = ConnectionFactory.createConnection(conf);
 
-        Admin admin=connection.getAdmin();
+        // Instantiating the Admin class to perform administrative operations
+        Admin admin = connection.getAdmin();
 
         List<TableDescriptor> tableDescriptor = admin.listTableDescriptors();
-        tableDescriptor.forEach(table -> System.out.println(table.getTableName()) );
+        tableDescriptor.forEach(table -> System.out.println(table.getTableName()));
 
     }
 }
